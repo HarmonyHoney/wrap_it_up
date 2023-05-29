@@ -6,11 +6,12 @@
 [ext_resource path="res://src/arcade/ArcadeGame.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/shader/inside_round_rect.gdshader" type="Shader" id=8]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 8 )
-shader_param/radius = 0.15
+shader_param/radius = 0.113
 shader_param/inside_color = Color( 0, 0, 0, 0 )
 shader_param/outside_color = Color( 0, 0.631373, 0.94902, 1 )
+shader_param/border = 0.125
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,33 +19,33 @@ script = ExtResource( 3 )
 [node name="Cabinet" type="Node2D" parent="."]
 position = Vector2( 360, 360 )
 
-[node name="Back" type="Polygon2D" parent="Cabinet"]
+[node name="Back" type="ColorRect" parent="Cabinet"]
+margin_left = -360.0
+margin_top = 150.0
+margin_right = 360.0
+margin_bottom = 450.0
+rect_clip_content = true
 color = Color( 0, 0.631373, 0.94902, 1 )
-polygon = PoolVector2Array( 360, 360, -360, 360, -360, -360, 360, -360 )
-script = ExtResource( 1 )
-is_baked = false
-size = Vector2( 360, 360 )
 
 [node name="Screen" type="Node2D" parent="Cabinet"]
 position = Vector2( 0, -70 )
-scale = Vector2( 0.9, 0.9 )
 
 [node name="Control" type="Control" parent="Cabinet/Screen"]
-margin_left = -300.0
-margin_top = -300.0
-margin_right = -260.0
-margin_bottom = -260.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = -270.0
+margin_top = -270.0
+margin_right = 930.0
+margin_bottom = 930.0
+rect_scale = Vector2( 0.45, 0.45 )
 
 [node name="ColorRect" type="ColorRect" parent="Cabinet/Screen/Control"]
-margin_right = 1200.0
-margin_bottom = 1200.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_clip_content = true
 color = Color( 0, 0, 0, 1 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="Cabinet/Screen/Control"]
-margin_right = 1200.0
-margin_bottom = 1200.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="Cabinet/Screen/Control/ViewportContainer"]
@@ -57,10 +58,12 @@ audio_listener_enable_2d = true
 
 [node name="Game" parent="Cabinet/Screen/Control/ViewportContainer/Viewport" instance=ExtResource( 6 )]
 
-[node name="Border" type="ColorRect" parent="Cabinet/Screen/Control"]
-material = SubResource( 2 )
-margin_right = 1200.0
-margin_bottom = 1200.0
+[node name="Border2" type="ColorRect" parent="Cabinet"]
+material = SubResource( 3 )
+margin_left = -360.0
+margin_top = -430.0
+margin_right = 360.0
+margin_bottom = 290.0
 rect_clip_content = true
 
 [node name="Controls" type="Node2D" parent="Cabinet"]

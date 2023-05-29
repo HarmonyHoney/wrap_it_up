@@ -20,8 +20,8 @@ var image_rot := 0.0
 var delta_scale := 1.0
 
 func _ready():
-	for i in get_tree().get_nodes_in_group("arcade"):
-		arcade = i
+	if is_instance_valid(Shared.arcade):
+		arcade = Shared.arcade
 	arcade.candies.append(self)
 	delta_scale = arcade.delta_scale
 	

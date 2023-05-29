@@ -6,7 +6,6 @@ onready var center_node := $UI/Control/Center
 onready var label_node := $UI/Control/Center/Label
 onready var wipe_mat : ShaderMaterial = $UI/Control/Wipe.material
 
-
 export var tile_size := 12.0
 
 export(String, DIR) var folder := ""
@@ -30,6 +29,9 @@ var is_unpause := false
 var candy_scene := load("res://src/arcade/Candy.tscn")
 
 onready var music : AudioStreamPlayer = Audio.dict["music_arcade"]
+
+func _enter_tree():
+	Shared.arcade = self
 
 func _ready():
 	MenuPause.connect("opened", self, "pause")
@@ -171,3 +173,7 @@ func shuffle_maps():
 		i.shuffle()
 		for y in i:
 			maps.append(y)
+
+func reset():
+	self.map = 0
+	lose()

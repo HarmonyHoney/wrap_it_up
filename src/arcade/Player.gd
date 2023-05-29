@@ -41,8 +41,8 @@ var is_unpause := false
 func _ready():
 	MenuPause.connect("opened", self, "pause")
 	
-	for i in get_tree().get_nodes_in_group("arcade"):
-		arcade = i
+	if is_instance_valid(Shared.arcade):
+		arcade = Shared.arcade
 	
 	if arcade.map == 0:
 		is_input = false

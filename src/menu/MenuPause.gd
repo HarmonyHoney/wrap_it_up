@@ -17,7 +17,7 @@ func accept():
 		"resume":
 			self.is_open = false
 		"reset":
-			Shared.reset()
+			Shared.arcade.reset()
 			self.is_open = false
 		"options":
 			sub_menu(MenuOptions)

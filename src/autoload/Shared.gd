@@ -12,6 +12,7 @@ onready var last_scene := csfn
 onready var next_scene := csfn
 signal scene_before
 signal scene_changed
+var arcade
 
 enum SPEED {OFF, MAP, FILE, BOTH, TRADE}
 var clock_show := 0 setget set_clock_show
