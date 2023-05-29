@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/theme/shadow_text.tres" type="Theme" id=1]
+[ext_resource path="res://media/font/profile/UI_Keys.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/menu/options/Key.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/autoload/UI.gd" type="Script" id=10]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 2
+
+[node name="UI" type="CanvasLayer"]
+pause_mode = 2
+layer = 10
+script = ExtResource( 10 )
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="Center"]
+margin_right = 720.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 720, 720 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Center/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0.109804 )
+material = SubResource( 1 )
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Keys" type="Control" parent="Center/Control"]
+margin_left = 720.0
+margin_top = 720.0
+margin_right = 760.0
+margin_bottom = 760.0
+rect_scale = Vector2( 0.9, 0.9 )
+
+[node name="List" type="HBoxContainer" parent="Center/Control/Keys"]
+margin_left = -500.0
+margin_top = -85.0
+margin_right = -18.0
+custom_constants/separation = 10
+alignment = 2
+
+[node name="Label" type="Label" parent="Center/Control/Keys/List"]
+margin_left = 57.0
+margin_top = 27.0
+margin_right = 165.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 2 )
+text = "Accept"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" parent="Center/Control/Keys/List" instance=ExtResource( 9 )]
+margin_left = 175.0
+margin_top = 17.0
+margin_right = 275.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 100, 50 )
+text = "ENTER"
+action = "ui_accept"
+is_connect = true
+
+[node name="Spacer" type="Control" parent="Center/Control/Keys/List"]
+margin_left = 285.0
+margin_right = 290.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Label2" type="Label" parent="Center/Control/Keys/List"]
+margin_left = 300.0
+margin_top = 27.0
+margin_right = 372.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key2" parent="Center/Control/Keys/List" instance=ExtResource( 9 )]
+margin_left = 382.0
+margin_top = 17.0
+margin_right = 482.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 100, 50 )
+text = "ESCAPE"
+action = "ui_cancel"
+is_connect = true
+
+[node name="Clock" type="VBoxContainer" parent="Center/Control"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 300, 200 )
+
+[node name="File" type="Label" parent="Center/Control/Clock"]
+modulate = Color( 1, 0.95, 0.95, 1 )
+margin_right = 320.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+text = "1:48:02"

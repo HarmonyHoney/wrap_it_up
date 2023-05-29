@@ -1,0 +1,7 @@
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# custom
+.import/
+[Ee]xport/*/
+[Ee]xport/_mac*

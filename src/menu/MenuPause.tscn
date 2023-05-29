@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://media/font/profile/PauseItem.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/menu/MenuPause.gd" type="Script" id=4]
+[ext_resource path="res://src/shader/fade_x.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+shader_param/size = 0.5
+shader_param/width = 0.1
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/scale = 1.0
+shader_param/is_half = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 5
+script = ExtResource( 4 )
+items_path = NodePath("Control/List/Items")
+cursor_path = NodePath("Control/List/Cursor")
+cursor_margin = Vector2( 20, 7 )
+fade_path = NodePath("Control")
+is_ui_keys = true
+is_process = true
+is_back_close = true
+is_audio_back = false
+
+[node name="Control" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="List" type="Control" parent="Control"]
+margin_right = 720.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 720, 720 )
+
+[node name="BG" type="ColorRect" parent="Control/List"]
+modulate = Color( 0, 0, 0, 0.8 )
+material = SubResource( 5 )
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Cursor" type="Panel" parent="Control/List"]
+modulate = Color( 0.658824, 0, 0, 1 )
+margin_right = 100.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Items" type="VBoxContainer" parent="Control/List"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Resume" type="Label" parent="Control/List/Items"]
+margin_left = 266.0
+margin_top = 235.0
+margin_right = 453.0
+margin_bottom = 286.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 2 )
+text = "Resume"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Label" parent="Control/List/Items"]
+margin_left = 259.0
+margin_top = 301.0
+margin_right = 460.0
+margin_bottom = 352.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Label" parent="Control/List/Items"]
+margin_left = 289.0
+margin_top = 367.0
+margin_right = 430.0
+margin_bottom = 418.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 2 )
+text = "Reset"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Label" parent="Control/List/Items"]
+margin_left = 302.0
+margin_top = 433.0
+margin_right = 417.0
+margin_bottom = 484.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 2 )
+text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

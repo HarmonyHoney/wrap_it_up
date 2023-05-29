@@ -1,0 +1,746 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://media/image/UI/clock.png" type="Texture" id=1]
+[ext_resource path="res://media/font/profile/OptionsItem.tres" type="DynamicFont" id=2]
+[ext_resource path="res://media/font/profile/OptionsHeader.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/menu/options/MenuOptions.gd" type="Script" id=4]
+[ext_resource path="res://src/menu/options/OpenRemap.gd" type="Script" id=5]
+[ext_resource path="res://src/menu/options/scroll/Resolution.gd" type="Script" id=6]
+[ext_resource path="res://src/menu/options/scroll/Scroll.gd" type="Script" id=7]
+[ext_resource path="res://media/image/UI/Input.png" type="Texture" id=8]
+[ext_resource path="res://media/image/UI/Audio.png" type="Texture" id=9]
+[ext_resource path="res://media/audio/sfx/Randomize104.wav" type="AudioStream" id=10]
+[ext_resource path="res://media/audio/sfx/jump2.wav" type="AudioStream" id=11]
+[ext_resource path="res://media/image/UI/Video.png" type="Texture" id=12]
+[ext_resource path="res://src/menu/options/scroll/Volume.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/menu/options/scroll/Fullscreen.gd" type="Script" id=14]
+[ext_resource path="res://src/menu/options/scroll/Vsync.gd" type="Script" id=17]
+[ext_resource path="res://src/menu/options/scroll/Mouse.gd" type="Script" id=18]
+[ext_resource path="res://src/menu/options/scroll/Borderless.gd" type="Script" id=19]
+[ext_resource path="res://src/shader/fade_x.gdshader" type="Shader" id=21]
+[ext_resource path="res://src/menu/options/scroll/ScrollVar.gd" type="Script" id=24]
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 21 )
+shader_param/size = 0.5
+shader_param/width = 0.1
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/scale = 1.0
+shader_param/is_half = false
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="OptionsMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 6
+script = ExtResource( 4 )
+items_path = NodePath("Control/Menu/List")
+cursor_path = NodePath("Control/Menu/Cursor")
+cursor_margin = Vector2( 25, 0 )
+scroll_path = NodePath("Control/Menu")
+fade_path = NodePath("Control")
+is_input = true
+is_process = true
+is_back_close = true
+is_joy_x = true
+is_act = true
+is_audio_joy = true
+
+[node name="Control" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="Control" parent="Control"]
+margin_right = 720.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 720, 720 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/BG"]
+modulate = Color( 0, 0, 0, 0.8 )
+material = SubResource( 20 )
+margin_right = 729.0
+margin_bottom = 720.0
+
+[node name="Menu" type="Control" parent="Control"]
+margin_right = 720.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 720, 720 )
+
+[node name="Cursor" type="Panel" parent="Control/Menu"]
+modulate = Color( 0.658824, 0, 0, 1 )
+margin_right = 100.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="List" type="VBoxContainer" parent="Control/Menu"]
+anchor_left = 0.05
+anchor_right = 0.95
+margin_bottom = 720.0
+custom_constants/separation = 0
+
+[node name="Spacer3" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_right = 648.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 70.0
+margin_right = 648.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 0, 160 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Header"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Options"
+align = 1
+valign = 1
+
+[node name="HeaderInput" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 230.0
+margin_right = 648.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Tex" type="TextureRect" parent="Control/Menu/List/HeaderInput"]
+anchor_right = 0.1
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Menu/List/HeaderInput"]
+anchor_left = 0.11
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Input"
+valign = 1
+
+[node name="Vibrate" type="Control" parent="Control/Menu/List"]
+visible = false
+margin_top = 300.0
+margin_right = 640.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Vibrate"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Controller Vibration"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Vibrate"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grab" type="Control" parent="Control/Menu/List"]
+visible = false
+margin_top = 300.0
+margin_right = 640.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Grab"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Grab Toggle"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Grab"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keyboard" type="Control" parent="Control/Menu/List"]
+margin_top = 300.0
+margin_right = 648.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Keyboard"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -390.432, 251.663 )
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Keyboard Setup"
+valign = 1
+
+[node name="Controller" type="Control" parent="Control/Menu/List"]
+margin_top = 370.0
+margin_right = 648.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+is_gamepad = true
+
+[node name="Label" type="Label" parent="Control/Menu/List/Controller"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -390.432, 251.663 )
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Controller Setup"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 440.0
+margin_right = 648.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderAudio" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 470.0
+margin_right = 648.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Tex" type="TextureRect" parent="Control/Menu/List/HeaderAudio"]
+anchor_right = 0.1
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/HeaderAudio"]
+anchor_left = 0.11
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Audio"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" parent="Control/Menu/List" instance=ExtResource( 13 )]
+margin_top = 540.0
+margin_right = 648.0
+margin_bottom = 610.0
+rect_min_size = Vector2( 0, 70 )
+bus = 2
+
+[node name="Label" parent="Control/Menu/List/Music" index="0"]
+text = "Music"
+
+[node name="Audio" parent="Control/Menu/List/Music" index="2"]
+stream = ExtResource( 11 )
+bus = "Music"
+
+[node name="SFX" parent="Control/Menu/List" instance=ExtResource( 13 )]
+margin_top = 610.0
+margin_right = 648.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 0, 70 )
+bus = 1
+
+[node name="Label" parent="Control/Menu/List/SFX" index="0"]
+text = "Sounds"
+
+[node name="Audio" parent="Control/Menu/List/SFX" index="2"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Spacer" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 680.0
+margin_right = 648.0
+margin_bottom = 710.0
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderVideo" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 710.0
+margin_right = 648.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Tex" type="TextureRect" parent="Control/Menu/List/HeaderVideo"]
+anchor_right = 0.1
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Menu/List/HeaderVideo"]
+anchor_left = 0.11
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Video"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="Control" parent="Control/Menu/List"]
+margin_top = 780.0
+margin_right = 648.0
+margin_bottom = 850.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+is_refill = true
+
+[node name="Label" type="Label" parent="Control/Menu/List/Fullscreen"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Fullscreen"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Fullscreen"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+
+[node name="Borderless" type="Control" parent="Control/Menu/List" groups=["window"]]
+margin_top = 850.0
+margin_right = 648.0
+margin_bottom = 920.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Borderless"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Borderless"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Borderless"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution" type="Control" parent="Control/Menu/List" groups=["window"]]
+margin_top = 920.0
+margin_right = 648.0
+margin_bottom = 990.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Resolution"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Window Size"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Resolution"]
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< 1280 x 720 >"
+align = 2
+valign = 1
+
+[node name="Mouse" type="Control" parent="Control/Menu/List" groups=["window"]]
+margin_top = 990.0
+margin_right = 648.0
+margin_bottom = 1060.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Mouse"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Mouse"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Mouse"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vsync" type="Control" parent="Control/Menu/List"]
+margin_top = 1060.0
+margin_right = 648.0
+margin_bottom = 1130.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Menu/List/Vsync"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "V-Sync"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Vsync"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Interpolate" type="Control" parent="Control/Menu/List"]
+margin_top = 1130.0
+margin_right = 648.0
+margin_bottom = 1200.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+var_name = "is_interpolate"
+
+[node name="Label" type="Label" parent="Control/Menu/List/Interpolate"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Interpolate"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Interpolate"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TargetFPS" type="Control" parent="Control/Menu/List"]
+margin_top = 1200.0
+margin_right = 648.0
+margin_bottom = 1270.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+list = PoolStringArray( "OFF", "30", "60", "90", "120", "144", "240" )
+var_name = "target_fps"
+is_int = true
+
+[node name="Label" type="Label" parent="Control/Menu/List/TargetFPS"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Frame Limit"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/TargetFPS"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Iterations" type="Control" parent="Control/Menu/List"]
+visible = false
+margin_top = 1270.0
+margin_right = 640.0
+margin_bottom = 1340.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+list = PoolStringArray( "60", "90", "120", "144" )
+var_name = "iterations"
+is_int = true
+
+[node name="Label" type="Label" parent="Control/Menu/List/Iterations"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Physics Step"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Iterations"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer4" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 1270.0
+margin_right = 648.0
+margin_bottom = 1300.0
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderSpeed" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 1300.0
+margin_right = 648.0
+margin_bottom = 1370.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Tex" type="TextureRect" parent="Control/Menu/List/HeaderSpeed"]
+anchor_right = 0.1
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Menu/List/HeaderSpeed"]
+anchor_left = 0.11
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Speedrun"
+valign = 1
+
+[node name="Speedrun" type="Control" parent="Control/Menu/List"]
+margin_top = 1370.0
+margin_right = 648.0
+margin_bottom = 1440.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+is_refill = true
+var_name = "clock_show"
+
+[node name="Label" type="Label" parent="Control/Menu/List/Speedrun"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Clock"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Speedrun"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< OFF >"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speedrun2" type="Control" parent="Control/Menu/List" groups=["speed"]]
+margin_top = 1440.0
+margin_right = 648.0
+margin_bottom = 1510.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+list = PoolStringArray( "LESS", "HALF", "MORE", "FULL" )
+var_name = "clock_alpha"
+is_frac = true
+
+[node name="Label" type="Label" parent="Control/Menu/List/Speedrun2"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Opacity"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Speedrun2"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< HALF >"
+align = 2
+valign = 1
+
+[node name="Decimals" type="Control" parent="Control/Menu/List" groups=["speed"]]
+margin_top = 1510.0
+margin_right = 648.0
+margin_bottom = 1580.0
+rect_min_size = Vector2( 0, 70 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+count = 3
+var_name = "clock_decimals"
+
+[node name="Label" type="Label" parent="Control/Menu/List/Decimals"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Decimals"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Menu/List/Decimals"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "< 2 >"
+align = 2
+valign = 1
+
+[editable path="Control/Menu/List/Music"]
+[editable path="Control/Menu/List/SFX"]
