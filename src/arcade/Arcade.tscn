@@ -61,7 +61,6 @@ audio_listener_enable_2d = true
 material = SubResource( 2 )
 margin_right = 1200.0
 margin_bottom = 1200.0
-rect_pivot_offset = Vector2( 2455.56, 1437.78 )
 rect_clip_content = true
 
 [node name="Controls" type="Node2D" parent="Cabinet"]

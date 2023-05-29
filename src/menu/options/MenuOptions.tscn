@@ -381,7 +381,8 @@ text = "< OFF >"
 align = 2
 valign = 1
 
-[node name="Borderless" type="Control" parent="Control/Menu/List" groups=["window"]]
+[node name="Borderless" type="Control" parent="Control/Menu/List"]
+visible = false
 margin_top = 850.0
 margin_right = 648.0
 margin_bottom = 920.0
@@ -413,10 +414,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resolution" type="Control" parent="Control/Menu/List" groups=["window"]]
-margin_top = 920.0
+[node name="Resolution" type="Control" parent="Control/Menu/List"]
+visible = false
+margin_top = 850.0
 margin_right = 648.0
-margin_bottom = 990.0
+margin_bottom = 920.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -442,10 +444,11 @@ text = "< 1280 x 720 >"
 align = 2
 valign = 1
 
-[node name="Mouse" type="Control" parent="Control/Menu/List" groups=["window"]]
-margin_top = 990.0
+[node name="Mouse" type="Control" parent="Control/Menu/List"]
+visible = false
+margin_top = 850.0
 margin_right = 648.0
-margin_bottom = 1060.0
+margin_bottom = 920.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 18 )
 __meta__ = {
@@ -475,9 +478,9 @@ __meta__ = {
 }
 
 [node name="Vsync" type="Control" parent="Control/Menu/List"]
-margin_top = 1060.0
+margin_top = 850.0
 margin_right = 648.0
-margin_bottom = 1130.0
+margin_bottom = 920.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 17 )
 __meta__ = {
@@ -507,9 +510,9 @@ __meta__ = {
 }
 
 [node name="Interpolate" type="Control" parent="Control/Menu/List"]
-margin_top = 1130.0
+margin_top = 920.0
 margin_right = 648.0
-margin_bottom = 1200.0
+margin_bottom = 990.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -540,9 +543,9 @@ __meta__ = {
 }
 
 [node name="TargetFPS" type="Control" parent="Control/Menu/List"]
-margin_top = 1200.0
+margin_top = 990.0
 margin_right = 648.0
-margin_bottom = 1270.0
+margin_bottom = 1060.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -611,18 +614,18 @@ __meta__ = {
 }
 
 [node name="Spacer4" type="Control" parent="Control/Menu/List" groups=["no_item"]]
-margin_top = 1270.0
+margin_top = 1060.0
 margin_right = 648.0
-margin_bottom = 1300.0
+margin_bottom = 1090.0
 rect_min_size = Vector2( 0, 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HeaderSpeed" type="Control" parent="Control/Menu/List" groups=["no_item"]]
-margin_top = 1300.0
+margin_top = 1090.0
 margin_right = 648.0
-margin_bottom = 1370.0
+margin_bottom = 1160.0
 rect_min_size = Vector2( 0, 70 )
 
 [node name="Tex" type="TextureRect" parent="Control/Menu/List/HeaderSpeed"]
@@ -643,9 +646,9 @@ text = "Speedrun"
 valign = 1
 
 [node name="Speedrun" type="Control" parent="Control/Menu/List"]
-margin_top = 1370.0
+margin_top = 1160.0
 margin_right = 648.0
-margin_bottom = 1440.0
+margin_bottom = 1230.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -678,9 +681,9 @@ __meta__ = {
 }
 
 [node name="Speedrun2" type="Control" parent="Control/Menu/List" groups=["speed"]]
-margin_top = 1440.0
+margin_top = 1230.0
 margin_right = 648.0
-margin_bottom = 1510.0
+margin_bottom = 1300.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -711,9 +714,9 @@ align = 2
 valign = 1
 
 [node name="Decimals" type="Control" parent="Control/Menu/List" groups=["speed"]]
-margin_top = 1510.0
+margin_top = 1300.0
 margin_right = 648.0
-margin_bottom = 1580.0
+margin_bottom = 1370.0
 rect_min_size = Vector2( 0, 70 )
 script = ExtResource( 24 )
 __meta__ = {
