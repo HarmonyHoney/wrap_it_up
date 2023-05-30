@@ -110,7 +110,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Label" parent="Control/List/Items"]
+[node name="Quit" type="Label" parent="Control/List/Items" groups=["hide_web"]]
 visible = false
 margin_left = 302.0
 margin_top = 433.0

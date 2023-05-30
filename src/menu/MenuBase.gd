@@ -187,6 +187,9 @@ func fill_items():
 	items = []
 	if items_node:
 		for i in items_node.get_children():
+			if i.is_in_group("hide_web"):
+				i.visible = !Shared.is_web
+			
 			if !i.is_in_group("no_item") and i.visible:
 				items.append(i)
 

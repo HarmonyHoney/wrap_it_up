@@ -13,6 +13,7 @@ onready var next_scene := csfn
 signal scene_before
 signal scene_changed
 var arcade
+var is_web := false
 
 enum SPEED {OFF, MAP, FILE, BOTH, TRADE}
 var clock_show := 0 setget set_clock_show
@@ -24,12 +25,14 @@ var is_gamepad := false
 signal gamepad_input(arg)
 
 var volume = [100, 100, 100, 100]
-var win_size := Vector2(1280, 720)
+var win_size := Vector2(720, 720)
 var win_sizes := [Vector2(360, 360), Vector2(540, 540), Vector2(720, 720), Vector2(900, 900),
 Vector2(1080, 1080), Vector2(1440, 1440), Vector2(2160, 2160)]
 var is_interpolate := true setget set_is_interpolate
 
 func _ready():
+	is_web = OS.get_name() == "HTML5"
+	
 	for i in [1, 2]:
 		set_volume(i, 50)
 	
@@ -41,14 +44,14 @@ func _ready():
 	load_keys()
 	
 	# setup window
-	if OS.window_fullscreen:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	else:
-		if OS.window_size in win_sizes:
+	if !is_web:
+		if OS.window_fullscreen:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		else:
 			win_size = OS.window_size
-		
-		# center window
-		set_window_size()
+			
+			# center window
+			set_window_size()
 	
 	yield(get_tree(), "idle_frame")
 	set_is_interpolate()

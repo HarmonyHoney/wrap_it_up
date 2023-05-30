@@ -36,10 +36,7 @@ func set_open(arg := is_open, is_audio := true):
 	
 	# setup items
 	if is_open:
-		items = []
-		for i in items_node.get_children():
-			if i.visible:
-				items.append(i)
+		fill_items()
 	
 	if is_audio:
 		Audio.play("menu_pause", 1.0 if is_open else 0.75)
