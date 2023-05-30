@@ -70,8 +70,8 @@ Audio="*res://src/autoload/Audio.tscn"
 
 window/size/width=720
 window/size/height=720
-window/size/test_width=1080
-window/size/test_height=1080
+window/size/test_width=900
+window/size/test_height=900
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 

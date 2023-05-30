@@ -1,4 +1,2 @@
-butler push win harmonyhoney/rota:win
-butler push linux harmonyhoney/rota:linux
-butler push mac harmonyhoney/rota:mac
+butler push web harmonyhoney/wrap-it-up:web
 pause
