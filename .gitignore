@@ -3,4 +3,8 @@
 
 # custom
 .import/
+[Ee]xport/_mac*
 [Ee]xport/web
+[Ee]xport/win
+[Ee]xport/mac
+[Ee]xport/linux
