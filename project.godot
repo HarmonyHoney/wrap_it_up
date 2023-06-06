@@ -51,7 +51,7 @@ run/main_scene="res://src/menu/Splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="wrap_it_up_harmony"
 config/project_settings_override="user://override.cfg"
-boot_splash/image="res://media/image/UI/title_splash.png"
+boot_splash/image="res://media/image/UI/HHSquareSplash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://media/image/UI/l_stick_up.png"
 

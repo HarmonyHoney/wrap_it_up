@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://media/image/UI/title_splash.png" type="Texture" id=1]
+[ext_resource path="res://media/image/UI/HHSquareSplash.png" type="Texture" id=1]
 [ext_resource path="res://src/menu/Splash.gd" type="Script" id=2]
 [ext_resource path="res://media/audio/sfx/bell1.wav" type="AudioStream" id=3]
 
@@ -17,10 +17,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Control" type="Control" parent="CenterContainer"]
-margin_top = 157.0
 margin_right = 720.0
-margin_bottom = 562.0
-rect_min_size = Vector2( 720, 405 )
+margin_bottom = 720.0
+rect_min_size = Vector2( 720, 720 )
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/Control"]
 modulate = Color( 0, 0, 0, 1 )

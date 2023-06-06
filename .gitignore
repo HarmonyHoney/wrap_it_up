@@ -3,5 +3,4 @@
 
 # custom
 .import/
-[Ee]xport/*/
-[Ee]xport/_mac*
+[Ee]xport/web
