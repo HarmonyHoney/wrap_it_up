@@ -1,7 +1,8 @@
-# Wrap It Up
-Screen Wrapping Arcade Platformer
+# ![icon](media/image/icon/48.png) WRAP IT UP
 
-Made with Godot 3.6
+Screen Wrapping Arcade Platformer Game
+
+Made with [Godot Engine 3.6](https://godotengine.org)
 
 Play now on [itch.io](https://harmonyhoney.itch.io/wrap-it-up) ! (:
 
