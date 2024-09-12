@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/class/shape/Rectangle.gd" type="Script" id=1]
 [ext_resource path="res://media/image/box/box-100.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://media/font/mini-wakuwaku.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/arcade/Wrapper.gd" type="Script" id=7]
+[ext_resource path="res://src/menu/Blink.gd" type="Script" id=8]
+[ext_resource path="res://src/menu/options/Key.tscn" type="PackedScene" id=9]
+[ext_resource path="res://media/font/profile/UI_Keys.tres" type="DynamicFont" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( 100, 100, 0, 100, 0, 0, 100, 0 )
@@ -63,6 +66,43 @@ detail = 6
 [node name="Wrapper" type="Node2D" parent="."]
 script = ExtResource( 7 )
 image_path = NodePath("../Title")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 165.0
+margin_bottom = 165.0
+rect_scale = Vector2( 1.5, 1.5 )
+use_top_left = true
+script = ExtResource( 8 )
+blink_off = 0.7
+color_blink = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="List" type="HBoxContainer" parent="CenterContainer"]
+margin_left = -97.0
+margin_top = -25.0
+margin_right = 96.0
+margin_bottom = 25.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/List"]
+margin_top = 9.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 10 )
+text = "Press"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" parent="CenterContainer/List" instance=ExtResource( 9 )]
+margin_left = 93.0
+margin_right = 193.0
+rect_min_size = Vector2( 100, 50 )
+text = "ENTER"
+action = "jump"
+is_connect = true
 
 [node name="Title" type="Node2D" parent="."]
 position = Vector2( -600, -400 )
