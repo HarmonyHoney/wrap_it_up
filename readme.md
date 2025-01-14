@@ -4,7 +4,7 @@ Screen Wrapping Arcade Platformer Game
 
 Made with [Godot Engine 3.6](https://godotengine.org)
 
-Play now on [itch.io](https://hhoneysoftware.itch.io/wrap-it-up) ! (:
+Full Game on [itch.io](https://hhoneysoftware.itch.io/wrap-it-up) ! (:
 
 # Unlicense
 This is free and unencumbered software released into the public domain.
