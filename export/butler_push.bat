@@ -1,5 +1,5 @@
-butler push web harmonyhoney/wrap-it-up:web
-butler push win harmonyhoney/wrap-it-up:win
-butler push linux harmonyhoney/wrap-it-up:linux
-butler push mac harmonyhoney/wrap-it-up:mac
+butler push web harmonyhoney/wrap-it-up-open:web
+butler push win harmonyhoney/wrap-it-up-open:win
+butler push linux harmonyhoney/wrap-it-up-open:linux
+butler push mac harmonyhoney/wrap-it-up-open:mac
 pause
