@@ -669,5 +669,21 @@ text = "< 2 >"
 align = 2
 valign = 1
 
+[node name="HeaderSpeed2" type="Control" parent="Control/Menu/List" groups=["no_item"]]
+margin_top = 1580.0
+margin_right = 648.0
+margin_bottom = 1650.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Label" type="Label" parent="Control/Menu/List/HeaderSpeed2"]
+anchor_left = 0.11
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -71.28
+custom_fonts/font = ExtResource( 3 )
+text = "harmonymonroe.com"
+align = 1
+valign = 1
+
 [editable path="Control/Menu/List/Music"]
 [editable path="Control/Menu/List/SFX"]
