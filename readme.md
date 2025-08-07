@@ -6,10 +6,8 @@ Made with [Godot Engine 3.6](https://godotengine.org)
 
 Play on itch.io [harmonymonroe.itch.io/wrap-it-up](https://harmonymonroe.itch.io/wrap-it-up) ! (:
 
-# Unlicense
-This is free and unencumbered software released into the public domain.
-
-See [LICENSE](LICENSE) for more information.
+# License
+MIT License. See [LICENSE](LICENSE) for more information.
 
 # Screenshots
 
